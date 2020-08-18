@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.ItemMapper">
+
+	<!-- 批量刪除數據  public void deleteItem(Long[] ids) { 單值傳參，傳數組
+	           參數: Long[] ids
+	     collection="array" 參數是數組
+	     collection="list"  參數是List
+	     collection="map中的key"   參數經過map封裝
+	     void deleteItem(@Param("ids")Long[] ids);  collection="ids"
+	     collection="ids"
+	-->
+	<delete id="deleteItem">
+		delete from tb_item 
+		where id in
+		<foreach collection="array" open="(" close=")" separator="," item="id">
+			#{id}
+		</foreach> 
+	</delete>
+
+</mapper>

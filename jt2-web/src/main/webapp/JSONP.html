@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSONP测试</title>
+<script type="text/javascript" src="http://manage.jt.com/js/jquery-easyui-1.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		alert("测试访问开始!!!!!")
+		$.ajax({
+			url:"http://manage.jt.com/web/testJSONP",
+			type:"get",				//jsonp只能支持get请求
+			dataType:"jsonp",       //dataType表示返回值类型
+			//jsonp: "callback",    //指定參數名稱	回調函數的key http://manage.jt.com/web/testJSONP?callback=hello...
+			//jsonpCallback: "hello",  //指定回調函數名稱 沒指定會默認自動生成 http://manage.jt.com/web/testJSONP?callback=jQuery111107101409326009631_1585392654433&_=1585392654434
+			success:function (data){   //data经过jQuery封装返回就是json串
+				alert(data.id);
+				alert(data.name);
+				//转化为字符串使用
+				//var obj = eval("("+data+")");
+				//alert(obj.name);
+			}	
+		});	
+	})
+</script>
+</head>
+<body>
+	<h1>JSON跨域请求测试</h1>
+</body>
+</html>

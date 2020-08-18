@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试JSON跨域问题</title>	
+	<script type="text/javascript">
+		/*JS是解释执行的语言  */
+		/*定義回調函數  */
+		function hello(data){
+			alert(data.name);
+		}
+	</script>
+	<!--1.利用src的開放原則獲取遠程數據，進行跨域訪問 -->
+	<!--數據加載完 src="{"id":"1","name":"tom"}" -->
+	<!--该json一直保存到浏览器中等待调用,但是没有函数名称无法调用  -->
+	<!--2.定義回調函數 function hello(data){ -->
+	<!--3.修改返回值數據為 回調函數名稱（json數據)  即hello({"id":"1","name":"tom"}) -->
+	<!--則數據加載完 src="hello({"id":"1","name":"tom"})"，於是回調函數執行(傳入加載的數據) -->
+	<script type="text/javascript" src="http://manage.jt.com/test.json"></script>
+	<script type="text/javascript" src="http://manage.jt.com/js/jquery-easyui-1.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>JS跨域问题</h1>
+	
+</script>
+</body>
+
+
+</html>
